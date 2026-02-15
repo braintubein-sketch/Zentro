@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8b5cf6"/>
-      <stop offset="100%" style="stop-color:#3b82f6"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9147ff"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
     </linearGradient>
   </defs>
-  <rect width="32" height="32" rx="8" fill="url(#g)"/>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
   <!-- Z letter -->
-  <path d="M8 9h16v3.5L13.5 22H24v3H8v-3.5L18.5 12H8V9z" fill="white"/>
-  <!-- Play triangle -->
-  <polygon points="14,13 14,20 20,16.5" fill="white" opacity="0.9"/>
+  <path d="M18 18h22l-18 24h22" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Play triangle merged into Z diagonal -->
+  <polygon points="38,24 48,32 38,40" fill="white"/>
 </svg>

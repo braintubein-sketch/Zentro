@@ -67,9 +67,9 @@ const Navbar = ({ onToggleSidebar }) => {
                     </button>
                     <Link to="/" className="flex items-center gap-1.5 group" id="logo-link">
                         <img
-                            src="/zentube-logo.png"
+                            src={isDark ? '/zentube-logo-dark.png' : '/zentube-logo-light.png'}
                             alt="Zentube"
-                            className="w-8 h-8 rounded-lg shadow-glow group-hover:shadow-glow-lg transition-shadow duration-300"
+                            className="w-8 h-8 rounded-lg shadow-glow group-hover:shadow-glow-lg transition-all duration-300"
                         />
                         <span className="text-lg font-bold tracking-tight hidden sm:block">
                             <span className="text-z-text">Zen</span>
