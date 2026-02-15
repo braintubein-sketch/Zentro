@@ -5,79 +5,46 @@
 @tailwind utilities;
 
 /* =============================================
-   ZENTUBE — YouTube-Style Design System
-   Red & Black • Dark + Light Mode
+   ZENTUBE — Exact YouTube Dark Mode
    ============================================= */
 
-/* === DARK THEME (DEFAULT) === */
-:root,
-[data-theme="dark"] {
-  --z-bg: #0f0f0f;
-  --z-bg-secondary: #0a0a0a;
-  --z-surface: #272727;
-  --z-surface-hover: #3f3f3f;
-  --z-elevated: #212121;
-  --z-elevated-hover: #2d2d2d;
-  --z-border: #3f3f3f;
-  --z-border-light: #4a4a4a;
-  --z-text: #f1f1f1;
-  --z-text-secondary: #aaaaaa;
-  --z-text-muted: #717171;
-  --z-chip: #272727;
-  --z-chip-active: #f1f1f1;
-  --z-chip-text: #f1f1f1;
-  --z-chip-text-active: #0f0f0f;
-  --z-overlay: rgba(0, 0, 0, 0.7);
-  --z-shadow: rgba(0, 0, 0, 0.4);
-  --z-scrollbar: #404040;
-  --z-scrollbar-hover: #555;
-  --z-selection-bg: rgba(255, 0, 0, 0.25);
-  --z-input-bg: #121212;
-  --z-card-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
-  --z-elevated-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  --z-premium-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --z-brand: #FF0000;
-  --z-brand-hover: #cc0000;
-  --z-brand-text: #FF4E45;
-  --z-subscribe-bg: #f1f1f1;
-  --z-subscribe-text: #0f0f0f;
-  --z-subscribed-bg: #272727;
-  --z-subscribed-text: #aaa;
-}
-
-/* === LIGHT THEME === */
-[data-theme="light"] {
-  --z-bg: #ffffff;
-  --z-bg-secondary: #f9f9f9;
-  --z-surface: #f2f2f2;
-  --z-surface-hover: #e5e5e5;
-  --z-elevated: #ffffff;
-  --z-elevated-hover: #f5f5f5;
-  --z-border: #d4d4d4;
-  --z-border-light: #e0e0e0;
-  --z-text: #0f0f0f;
-  --z-text-secondary: #606060;
-  --z-text-muted: #909090;
-  --z-chip: #f2f2f2;
-  --z-chip-active: #0f0f0f;
-  --z-chip-text: #0f0f0f;
-  --z-chip-text-active: #ffffff;
-  --z-overlay: rgba(0, 0, 0, 0.5);
-  --z-shadow: rgba(0, 0, 0, 0.08);
-  --z-scrollbar: #c0c0c0;
-  --z-scrollbar-hover: #a0a0a0;
-  --z-selection-bg: rgba(255, 0, 0, 0.15);
-  --z-input-bg: #ffffff;
-  --z-card-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  --z-elevated-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  --z-premium-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-  --z-brand: #FF0000;
-  --z-brand-hover: #cc0000;
-  --z-brand-text: #cc0000;
-  --z-subscribe-bg: #0f0f0f;
-  --z-subscribe-text: #ffffff;
-  --z-subscribed-bg: #f2f2f2;
-  --z-subscribed-text: #606060;
+:root {
+  /* YouTube Dark Mode — exact colors */
+  --yt-bg: #0f0f0f;
+  --yt-bg-raised: #212121;
+  --yt-surface: #272727;
+  --yt-surface-hover: #3f3f3f;
+  --yt-elevated: #282828;
+  --yt-border: #3f3f3f;
+  --yt-text: #f1f1f1;
+  --yt-text-secondary: #aaaaaa;
+  --yt-text-muted: #717171;
+  --yt-chip-bg: #272727;
+  --yt-chip-bg-active: #f1f1f1;
+  --yt-chip-text: #f1f1f1;
+  --yt-chip-text-active: #0f0f0f;
+  --yt-chip-hover: #3a3a3a;
+  --yt-red: #ff0000;
+  --yt-red-hover: #cc0000;
+  --yt-blue: #3ea6ff;
+  --yt-green: #2ba640;
+  --yt-search-bg: #121212;
+  --yt-search-border: #303030;
+  --yt-search-focus: #1c62b9;
+  --yt-search-btn: #222222;
+  --yt-overlay: rgba(0, 0, 0, 0.6);
+  --yt-subscribe-bg: #f1f1f1;
+  --yt-subscribe-text: #0f0f0f;
+  --yt-subscribed-bg: #272727;
+  --yt-subscribed-text: #f1f1f1;
+  --yt-scrollbar: #404040;
+  --yt-scrollbar-hover: #606060;
+  --yt-skeleton: #ffffff12;
+  --yt-tooltip-bg: #e8e8e8;
+  --yt-tooltip-text: #0f0f0f;
+  --yt-menu-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+  --yt-icon: #f1f1f1;
+  --yt-icon-secondary: #aaaaaa;
 }
 
 @layer base {
@@ -88,23 +55,24 @@
   }
 
   html {
+    background-color: var(--yt-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color-scheme: dark;
   }
 
   body {
-    background-color: var(--z-bg);
-    color: var(--z-text);
+    background-color: var(--yt-bg);
+    color: var(--yt-text);
     font-family: 'Roboto', 'Arial', sans-serif;
-    overflow-x: hidden;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    line-height: 1.4;
     font-size: 14px;
+    line-height: 1.4;
+    overflow-x: hidden;
   }
 
   ::selection {
-    background: var(--z-selection-bg);
-    color: var(--z-text);
+    background: rgba(62, 166, 255, 0.3);
+    color: #fff;
   }
 
   ::-webkit-scrollbar {
@@ -117,57 +85,62 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--z-scrollbar);
+    background: var(--yt-scrollbar);
     border-radius: 99px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--z-scrollbar-hover);
+    background: var(--yt-scrollbar-hover);
   }
 
   a {
     color: inherit;
     text-decoration: none;
   }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
 }
 
 @layer components {
 
-  /* === BUTTONS (YouTube Style) === */
+  /* ===== BUTTONS ===== */
   .btn-primary {
-    @apply px-4 py-2 rounded-full font-medium text-sm text-white transition-all duration-200 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed;
-    background-color: var(--z-brand);
+    @apply px-4 py-2 rounded-full text-sm font-medium text-white transition-opacity duration-200 active:scale-[0.97];
+    background-color: var(--yt-red);
   }
 
   .btn-primary:hover {
-    background-color: var(--z-brand-hover);
+    opacity: 0.85;
   }
 
   .btn-secondary {
-    @apply px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 active:scale-[0.97] disabled:opacity-50;
-    background-color: var(--z-surface);
-    color: var(--z-text);
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 active:scale-[0.97];
+    background-color: var(--yt-surface);
+    color: var(--yt-text);
   }
 
   .btn-secondary:hover {
-    background-color: var(--z-surface-hover);
+    background-color: var(--yt-surface-hover);
   }
 
   .btn-ghost {
     @apply px-3 py-2 rounded-full text-sm font-medium transition-colors duration-150;
-    color: var(--z-text-secondary);
+    color: var(--yt-text-secondary);
   }
 
   .btn-ghost:hover {
-    color: var(--z-text);
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
+    color: var(--yt-text);
   }
 
   .btn-danger {
-    @apply px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 active:scale-[0.97];
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-opacity duration-200 active:scale-[0.97];
     background-color: rgba(255, 0, 0, 0.1);
-    color: var(--z-brand);
-    border: 1px solid rgba(255, 0, 0, 0.2);
+    color: var(--yt-red);
   }
 
   .btn-danger:hover {
@@ -176,108 +149,106 @@
 
   .btn-icon {
     @apply p-2 rounded-full transition-colors duration-150;
-    color: var(--z-text);
+    color: var(--yt-icon);
   }
 
   .btn-icon:hover {
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
   }
 
   .btn-icon-sm {
     @apply p-1.5 rounded-full transition-colors duration-150;
-    color: var(--z-text-secondary);
+    color: var(--yt-icon-secondary);
   }
 
   .btn-icon-sm:hover {
-    background-color: var(--z-surface);
-    color: var(--z-text);
+    background-color: var(--yt-surface);
+    color: var(--yt-icon);
   }
 
-  /* YouTube-style Subscribe */
+  /* YouTube Subscribe */
   .btn-subscribe {
-    @apply px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 active:scale-[0.97];
-    background-color: var(--z-subscribe-bg);
-    color: var(--z-subscribe-text);
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-opacity duration-200 active:scale-[0.97];
+    background-color: var(--yt-subscribe-bg);
+    color: var(--yt-subscribe-text);
   }
 
   .btn-subscribe:hover {
-    opacity: 0.85;
+    opacity: 0.9;
   }
 
   .btn-subscribed {
-    @apply px-4 py-2 rounded-full font-medium text-sm transition-all duration-200;
-    background-color: var(--z-subscribed-bg);
-    color: var(--z-subscribed-text);
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200;
+    background-color: var(--yt-subscribed-bg);
+    color: var(--yt-subscribed-text);
   }
 
   .btn-subscribed:hover {
-    background-color: var(--z-surface-hover);
+    background-color: var(--yt-surface-hover);
   }
 
-  /* === INPUTS === */
+  /* ===== INPUTS (YouTube Style) ===== */
   .input-field {
     @apply w-full px-3 py-2 rounded-lg text-sm transition-all duration-150;
-    background-color: var(--z-input-bg);
-    color: var(--z-text);
-    border: 1px solid var(--z-border);
+    background-color: var(--yt-search-bg);
+    color: var(--yt-text);
+    border: 1px solid var(--yt-search-border);
   }
 
   .input-field:focus {
     outline: none;
-    border-color: #065fd4;
-    box-shadow: 0 0 0 2px rgba(6, 95, 212, 0.2);
+    border-color: var(--yt-search-focus);
   }
 
   .input-field::placeholder {
-    color: var(--z-text-muted);
+    color: var(--yt-text-muted);
   }
 
-  /* === CARDS === */
+  /* ===== CARDS ===== */
   .card {
-    @apply rounded-xl transition-all duration-200;
-    background-color: var(--z-surface);
+    @apply rounded-xl transition-colors duration-200;
+    background-color: var(--yt-bg);
   }
 
   .card-hover:hover {
-    background-color: var(--z-surface-hover);
+    background-color: var(--yt-surface);
     cursor: pointer;
   }
 
   .card-elevated {
-    @apply rounded-xl transition-all duration-200;
-    background-color: var(--z-elevated);
-    box-shadow: var(--z-card-shadow);
-    border: 1px solid var(--z-border);
+    @apply rounded-xl;
+    background-color: var(--yt-bg-raised);
+    border: 1px solid var(--yt-border);
   }
 
   .card-glass {
     @apply rounded-2xl backdrop-blur-xl;
-    background-color: color-mix(in srgb, var(--z-elevated) 80%, transparent);
-    border: 1px solid color-mix(in srgb, var(--z-border) 40%, transparent);
-    box-shadow: var(--z-premium-shadow);
+    background-color: rgba(33, 33, 33, 0.85);
+    border: 1px solid rgba(63, 63, 63, 0.5);
+    box-shadow: var(--yt-menu-shadow);
   }
 
-  /* === CHIPS / PILLS (YouTube Category Style) === */
+  /* ===== CHIPS (YouTube Category Tabs) ===== */
   .chip {
-    @apply px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-all duration-150 whitespace-nowrap select-none;
-    background-color: var(--z-chip);
-    color: var(--z-chip-text);
+    @apply px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-colors duration-150 whitespace-nowrap select-none;
+    background-color: var(--yt-chip-bg);
+    color: var(--yt-chip-text);
   }
 
   .chip:hover {
-    background-color: var(--z-surface-hover);
+    background-color: var(--yt-chip-hover);
   }
 
   .chip-active {
-    background-color: var(--z-chip-active) !important;
-    color: var(--z-chip-text-active) !important;
+    background-color: var(--yt-chip-bg-active) !important;
+    color: var(--yt-chip-text-active) !important;
   }
 
-  /* === BADGES / TAGS === */
+  /* ===== TAGS ===== */
   .tag {
     @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium;
-    background-color: var(--z-chip);
-    color: var(--z-text-secondary);
+    background-color: var(--yt-surface);
+    color: var(--yt-text-secondary);
   }
 
   .tag-live {
@@ -286,10 +257,10 @@
     color: white;
   }
 
-  /* === AVATAR === */
+  /* ===== AVATARS ===== */
   .avatar {
     @apply rounded-full object-cover;
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
   }
 
   .avatar-xs {
@@ -320,105 +291,100 @@
     @apply w-32 h-32;
   }
 
-  /* === DROPDOWN (YouTube-style) === */
+  /* ===== DROPDOWN (YouTube Menu) ===== */
   .dropdown-menu {
     @apply absolute z-50 min-w-[200px] py-2 rounded-xl animate-scale-in origin-top-right;
-    background-color: var(--z-elevated);
-    border: 1px solid var(--z-border);
-    box-shadow: var(--z-premium-shadow);
+    background-color: var(--yt-elevated);
+    border: 1px solid var(--yt-border);
+    box-shadow: var(--yt-menu-shadow);
   }
 
   .dropdown-item {
     @apply flex items-center gap-3 px-4 py-2.5 text-sm cursor-pointer transition-colors duration-100;
-    color: var(--z-text);
+    color: var(--yt-text);
   }
 
   .dropdown-item:hover {
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
   }
 
   .dropdown-divider {
     @apply my-1;
-    border-top: 1px solid var(--z-border);
+    border-top: 1px solid var(--yt-border);
   }
 
-  /* === TOOLTIP === */
+  /* ===== TOOLTIP ===== */
   .tooltip {
-    @apply absolute z-50 px-2 py-1 text-xs font-medium rounded-md shadow-lg whitespace-nowrap pointer-events-none animate-fade-in;
-    background-color: var(--z-chip-active);
-    color: var(--z-bg);
+    @apply absolute z-50 px-2 py-1 text-xs font-medium rounded whitespace-nowrap pointer-events-none animate-fade-in;
+    background-color: var(--yt-tooltip-bg);
+    color: var(--yt-tooltip-text);
   }
 
-  /* === SKELETON (YouTube-style loading) === */
+  /* ===== SKELETON ===== */
   .skeleton {
-    @apply rounded-lg animate-pulse;
-    background-color: var(--z-surface);
+    @apply rounded-lg;
+    background-color: var(--yt-skeleton);
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
   }
 
-  .skeleton-shimmer {
-    @apply relative overflow-hidden;
-    background-color: var(--z-surface);
+  @keyframes skeleton-pulse {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.4;
+    }
   }
 
-  .skeleton-shimmer::after {
-    content: '';
-    @apply absolute inset-0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s linear infinite;
-  }
-
-  [data-theme="light"] .skeleton-shimmer::after {
-    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.04), transparent);
-    background-size: 200% 100%;
-  }
-
-  /* === MODAL === */
+  /* ===== MODAL ===== */
   .modal-overlay {
-    @apply fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in;
-    background-color: var(--z-overlay);
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in;
+    background-color: var(--yt-overlay);
   }
 
   .modal-content {
     @apply rounded-2xl max-w-lg w-full animate-scale-up;
-    background-color: var(--z-elevated);
-    border: 1px solid var(--z-border);
-    box-shadow: var(--z-premium-shadow);
+    background-color: var(--yt-elevated);
+    border: 1px solid var(--yt-border);
+    box-shadow: var(--yt-menu-shadow);
   }
 
-  /* === PROGRESS === */
+  /* ===== PROGRESS BAR ===== */
   .progress-bar {
     @apply h-1 rounded-full overflow-hidden;
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
   }
 
   .progress-bar-fill {
     @apply h-full rounded-full transition-all duration-500 ease-out;
-    background-color: var(--z-brand);
+    background-color: var(--yt-red);
   }
 
-  /* === DIVIDER === */
+  /* ===== DIVIDER ===== */
   .divider {
     @apply my-4;
-    border-top: 1px solid var(--z-border);
+    border-top: 1px solid var(--yt-border);
   }
 
-  /* === NOTIFICATION BADGE (YouTube red dot) === */
+  /* ===== NOTIFICATION ===== */
   .notification-dot {
     @apply absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full;
-    background-color: var(--z-brand);
-    box-shadow: 0 0 0 2px var(--z-bg);
+    background-color: var(--yt-red);
+    box-shadow: 0 0 0 2px var(--yt-bg);
   }
 
   .notification-badge {
     @apply absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 flex items-center justify-center text-[10px] font-bold text-white rounded-full;
-    background-color: var(--z-brand);
-    box-shadow: 0 0 0 2px var(--z-bg);
+    background-color: var(--yt-red);
+    box-shadow: 0 0 0 2px var(--yt-bg);
   }
 
-  /* === GRADIENT TEXT (Red) === */
+  /* ===== TEXT STYLES ===== */
   .gradient-text {
-    color: var(--z-brand);
+    color: var(--yt-red);
   }
 
   .gradient-text-gold {
@@ -428,64 +394,54 @@
     background-clip: text;
   }
 
-  /* === SIDEBAR NAV === */
+  .text-yt-blue {
+    color: var(--yt-blue);
+  }
+
+  /* ===== SIDEBAR ===== */
   .sidebar-item {
     @apply flex items-center gap-6 px-3 py-2.5 rounded-xl text-sm cursor-pointer transition-colors duration-100;
-    color: var(--z-text);
+    color: var(--yt-text);
   }
 
   .sidebar-item:hover {
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
   }
 
   .sidebar-item-active {
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
     font-weight: 500;
   }
 
   .sidebar-item-mini {
     @apply flex flex-col items-center gap-1.5 py-4 px-1 rounded-xl text-[10px] cursor-pointer transition-colors duration-100;
-    color: var(--z-text);
+    color: var(--yt-text);
   }
 
   .sidebar-item-mini:hover {
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
   }
 
-  /* === TABS === */
+  /* ===== TABS ===== */
   .tab {
     @apply px-4 py-3 text-sm font-medium relative cursor-pointer transition-colors duration-150;
-    color: var(--z-text-secondary);
+    color: var(--yt-text-secondary);
   }
 
   .tab:hover {
-    color: var(--z-text);
+    color: var(--yt-text);
   }
 
   .tab-active {
-    color: var(--z-text);
+    color: var(--yt-text);
   }
 
   .tab-indicator {
     @apply absolute bottom-0 left-0 right-0 h-0.5 rounded-full;
-    background-color: var(--z-text);
+    background-color: var(--yt-text);
   }
 
-  /* === THEME TOGGLE === */
-  .theme-toggle {
-    @apply relative w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 overflow-hidden;
-  }
-
-  .theme-toggle:hover {
-    background-color: var(--z-surface);
-  }
-
-  .theme-toggle .icon {
-    @apply w-5 h-5 transition-transform duration-300;
-    color: var(--z-text);
-  }
-
-  /* === SCROLLBAR HIDDEN === */
+  /* ===== SCROLLBAR HIDDEN ===== */
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -518,44 +474,45 @@
     overflow: hidden;
   }
 
+  /* Utility classes that map to YouTube vars */
   .text-z-text {
-    color: var(--z-text);
+    color: var(--yt-text);
   }
 
   .text-z-text-secondary {
-    color: var(--z-text-secondary);
+    color: var(--yt-text-secondary);
   }
 
   .text-z-text-muted {
-    color: var(--z-text-muted);
+    color: var(--yt-text-muted);
   }
 
   .bg-z-bg {
-    background-color: var(--z-bg);
+    background-color: var(--yt-bg);
   }
 
   .bg-z-surface {
-    background-color: var(--z-surface);
+    background-color: var(--yt-surface);
   }
 
   .bg-z-surface-hover {
-    background-color: var(--z-surface-hover);
+    background-color: var(--yt-surface-hover);
   }
 
   .bg-z-elevated {
-    background-color: var(--z-elevated);
+    background-color: var(--yt-elevated);
   }
 
   .border-z-border {
-    border-color: var(--z-border);
+    border-color: var(--yt-border);
   }
 
   .border-z-border-light {
-    border-color: var(--z-border-light);
+    border-color: var(--yt-border);
   }
 }
 
-/* === ANIMATIONS === */
+/* ===== ANIMATIONS ===== */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -566,22 +523,7 @@
   }
 }
 
-/* === SMOOTH THEME TRANSITIONS === */
-body,
-header,
-aside,
-.card,
-.card-elevated,
-.dropdown-menu,
-.chip,
-.input-field,
-.btn-secondary,
-.btn-ghost,
-.sidebar-item {
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-/* === MOBILE RESPONSIVE === */
+/* ===== MOBILE ===== */
 @media (max-width: 640px) {
 
   .btn-icon,
@@ -610,23 +552,12 @@ aside,
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
 @media (hover: none) {
   .sidebar-item:active {
-    background-color: var(--z-surface-hover);
+    background-color: var(--yt-surface-hover);
   }
 
   .chip:active {
     transform: scale(0.95);
   }
-}
-
-/* === LIGHT MODE HEADER === */
-[data-theme="light"] header {
-  border-bottom-color: #e5e5e5;
 }

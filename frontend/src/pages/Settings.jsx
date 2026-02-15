@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
 import { authAPI } from '../api';
 import toast from 'react-hot-toast';
 import {
@@ -12,7 +11,6 @@ import {
 
 const Settings = () => {
     const { user, updateUser } = useAuth();
-    const { theme: currentTheme, setTheme } = useTheme();
     const [activeSection, setActiveSection] = useState('account');
     const [saving, setSaving] = useState(false);
     const [profileForm, setProfileForm] = useState({
@@ -27,7 +25,7 @@ const Settings = () => {
         confirmPassword: '',
     });
     const [preferences, setPreferences] = useState({
-        theme: currentTheme,
+        theme: 'dark',
         language: 'en',
         autoplay: true,
         notifications: true,
@@ -39,7 +37,7 @@ const Settings = () => {
         { id: 'account', label: 'Account', icon: HiOutlineUser },
         { id: 'password', label: 'Password', icon: HiOutlineKey },
         { id: 'notifications', label: 'Notifications', icon: HiOutlineBell },
-        { id: 'appearance', label: 'Appearance', icon: HiOutlineMoon },
+        { id: 'appearance', label: 'Appearance', icon: HiOutlineDesktopComputer },
         { id: 'privacy', label: 'Privacy & Security', icon: HiOutlineShieldCheck },
         { id: 'advanced', label: 'Advanced', icon: HiOutlineDesktopComputer },
     ];
@@ -228,32 +226,18 @@ const Settings = () => {
                         </div>
                     )}
 
-                    {/* Appearance */}
                     {activeSection === 'appearance' && (
                         <div className="card-elevated p-6 animate-fade-in">
                             <h2 className="text-lg font-bold mb-6">Appearance</h2>
-                            <div className="space-y-6">
+                            <div className="space-y-4">
                                 <div>
-                                    <h3 className="text-sm font-medium text-z-text mb-3">Theme</h3>
-                                    <div className="grid grid-cols-3 gap-3">
-                                        {[
-                                            { id: 'dark', label: 'Dark', icon: HiOutlineMoon, desc: 'Always dark' },
-                                            { id: 'light', label: 'Light', icon: HiOutlineSun, desc: 'Always light' },
-                                            { id: 'system', label: 'System', icon: HiOutlineDesktopComputer, desc: 'Match device' },
-                                        ].map(theme => (
-                                            <button
-                                                key={theme.id}
-                                                onClick={() => { setPreferences({ ...preferences, theme: theme.id }); setTheme(theme.id); }}
-                                                className={`p-4 rounded-xl border transition-all text-center ${preferences.theme === theme.id
-                                                    ? 'border-brand bg-brand/10 shadow-glow'
-                                                    : 'border-z-border hover:border-z-border-light hover:bg-z-surface'
-                                                    }`}
-                                            >
-                                                <theme.icon className="w-6 h-6 mx-auto mb-2" />
-                                                <p className="text-sm font-medium">{theme.label}</p>
-                                                <p className="text-xs text-z-text-muted mt-0.5">{theme.desc}</p>
-                                            </button>
-                                        ))}
+                                    <h3 className="text-sm font-medium mb-2" style={{ color: '#f1f1f1' }}>Theme</h3>
+                                    <div className="flex items-center gap-3 p-4 rounded-xl" style={{ backgroundColor: '#272727', border: '1px solid #3f3f3f' }}>
+                                        <HiOutlineMoon className="w-5 h-5" style={{ color: '#f1f1f1' }} />
+                                        <div>
+                                            <p className="text-sm font-medium" style={{ color: '#f1f1f1' }}>Dark theme</p>
+                                            <p className="text-xs" style={{ color: '#717171' }}>Always on</p>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -262,6 +246,9 @@ const Settings = () => {
                                 <ToggleSwitch checked={preferences.autoplay} label="Autoplay videos"
                                     desc="Automatically play the next video"
                                     onChange={(v) => setPreferences({ ...preferences, autoplay: v })} />
+                                <ToggleSwitch checked={preferences.restrictedMode} label="Restricted mode"
+                                    desc="Hide potentially mature content"
+                                    onChange={(v) => setPreferences({ ...preferences, restrictedMode: v })} />
                             </div>
                         </div>
                     )}

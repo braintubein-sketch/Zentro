@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { useTheme } from '../../context/ThemeContext';
 import {
     HiOutlineHome, HiOutlineFire, HiOutlineFilm,
     HiOutlineUserGroup, HiOutlineClock, HiOutlineBookmark,
@@ -13,7 +12,6 @@ import { SiYoutubegaming } from 'react-icons/si';
 
 const Sidebar = ({ isOpen, isMini, isMobile, onClose }) => {
     const { isAuthenticated, user } = useAuth();
-    const { isDark } = useTheme();
     const location = useLocation();
 
     const mainLinks = [
