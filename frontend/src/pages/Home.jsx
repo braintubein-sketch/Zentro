@@ -85,7 +85,7 @@ const Home = () => {
     return (
         <div>
             {/* Category Chips Bar (YouTube style) */}
-            <div className="sticky top-14 z-20 bg-z-bg/95 backdrop-blur-md pb-3 pt-1 -mx-6 px-6 border-b border-z-border/30">
+            <div className="sticky top-14 z-20 bg-z-bg/95 backdrop-blur-md pb-3 pt-1 -mx-3 sm:-mx-4 md:-mx-6 px-3 sm:px-4 md:px-6 border-b border-z-border/30">
                 <div className="relative">
                     {/* Left Arrow */}
                     {showLeftArrow && (
@@ -99,12 +99,12 @@ const Home = () => {
                     )}
 
                     {/* Chips */}
-                    <div ref={chipsRef} className="flex gap-3 overflow-x-auto no-scrollbar px-1 py-1">
+                    <div ref={chipsRef} className="flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar px-1 py-1">
                         {CATEGORIES.map(cat => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
-                                className={`chip ${activeCategory === cat ? 'chip-active' : ''} shrink-0`}
+                                className={`chip text-xs sm:text-sm ${activeCategory === cat ? 'chip-active' : ''} shrink-0`}
                             >
                                 {cat}
                             </button>
@@ -125,12 +125,12 @@ const Home = () => {
             </div>
 
             {/* Video Grid */}
-            <div className="mt-6">
+            <div className="mt-4 sm:mt-6">
                 {loading ? (
                     <VideoCardSkeleton count={12} />
                 ) : videos.length > 0 ? (
                     <>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
+                        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-3 sm:gap-x-4 gap-y-6 sm:gap-y-8">
                             {videos.map((video, index) => (
                                 <div
                                     key={video._id}

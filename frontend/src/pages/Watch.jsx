@@ -145,14 +145,14 @@ const Watch = () => {
     const owner = video.owner || {};
 
     return (
-        <div className={`${theaterMode ? '' : 'max-w-[1800px] mx-auto p-6'}`}>
-            <div className={`flex ${theaterMode ? 'flex-col' : 'flex-col xl:flex-row'} gap-6`}>
+        <div className={`${theaterMode ? '' : 'max-w-[1800px] mx-auto p-2 sm:p-4 md:p-6'}`}>
+            <div className={`flex ${theaterMode ? 'flex-col' : 'flex-col xl:flex-row'} gap-4 sm:gap-6`}>
 
                 {/* === Main Column === */}
                 <div className={`${theaterMode ? 'w-full' : 'flex-1 min-w-0'}`}>
 
                     {/* Video Player */}
-                    <div className={`relative bg-black ${theaterMode ? 'w-full aspect-video max-h-[80vh]' : 'rounded-xl overflow-hidden aspect-video'}`}>
+                    <div className={`relative bg-black ${theaterMode ? 'w-full aspect-video max-h-[80vh]' : 'rounded-lg sm:rounded-xl overflow-hidden aspect-video'}`}>
                         <video
                             ref={videoRef}
                             src={video.videoUrl}
@@ -172,12 +172,12 @@ const Watch = () => {
                     </div>
 
                     {/* Video Info */}
-                    <div className={`${theaterMode ? 'px-6 max-w-[1200px] mx-auto' : ''} mt-3`}>
+                    <div className={`${theaterMode ? 'px-3 sm:px-6 max-w-[1200px] mx-auto' : ''} mt-2 sm:mt-3`}>
                         {/* Title */}
-                        <h1 className="text-xl font-bold text-z-text leading-snug">{video.title}</h1>
+                        <h1 className="text-base sm:text-xl font-bold text-z-text leading-snug">{video.title}</h1>
 
                         {/* Actions Bar */}
-                        <div className="flex flex-wrap items-center justify-between gap-3 mt-3">
+                        <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-between gap-3 mt-3">
                             {/* Channel info + Subscribe */}
                             <div className="flex items-center gap-3">
                                 <Link to={`/channel/${owner._id}`}>
@@ -204,7 +204,7 @@ const Watch = () => {
                             </div>
 
                             {/* Action buttons */}
-                            <div className="flex items-center gap-2 flex-wrap">
+                            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap w-full sm:w-auto">
                                 {/* Like/Dislike pill */}
                                 <div className="flex items-center bg-z-surface rounded-full overflow-hidden">
                                     <button
@@ -228,16 +228,16 @@ const Watch = () => {
                                 </div>
 
                                 {/* Share */}
-                                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-z-surface rounded-full text-sm font-medium
-                  text-z-text-secondary hover:text-z-text hover:bg-z-surface-hover transition-colors">
-                                    <HiOutlineShare className="w-5 h-5" />
+                                <button onClick={handleShare} className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-z-surface rounded-full text-xs sm:text-sm font-medium
+                   text-z-text-secondary hover:text-z-text hover:bg-z-surface-hover transition-colors">
+                                    <HiOutlineShare className="w-4 h-4 sm:w-5 sm:h-5" />
                                     Share
                                 </button>
 
                                 {/* Save */}
-                                <button onClick={handleWatchLater} className="flex items-center gap-2 px-4 py-2 bg-z-surface rounded-full text-sm font-medium
-                  text-z-text-secondary hover:text-z-text hover:bg-z-surface-hover transition-colors">
-                                    <HiOutlineBookmark className="w-5 h-5" />
+                                <button onClick={handleWatchLater} className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-z-surface rounded-full text-xs sm:text-sm font-medium
+                   text-z-text-secondary hover:text-z-text hover:bg-z-surface-hover transition-colors">
+                                    <HiOutlineBookmark className="w-4 h-4 sm:w-5 sm:h-5" />
                                     Save
                                 </button>
 
@@ -364,7 +364,7 @@ const Watch = () => {
                 </div>
 
                 {/* === Right Sidebar: Recommended === */}
-                <div className={`${theaterMode ? 'max-w-[1200px] mx-auto px-6' : 'xl:w-[400px] shrink-0'}`}>
+                <div className={`${theaterMode ? 'max-w-[1200px] mx-auto px-3 sm:px-6' : 'xl:w-[400px] shrink-0'}`}>
                     <div className={`${theaterMode ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4' : 'space-y-3'}`}>
                         {recommended.map(rec => (
                             <VideoCard key={rec._id} video={rec} horizontal={!theaterMode} />

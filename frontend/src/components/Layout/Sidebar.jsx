@@ -6,11 +6,11 @@ import {
     HiOutlineThumbUp, HiOutlineVideoCamera, HiOutlineChartBar,
     HiOutlineCog, HiOutlineViewGrid, HiOutlineFolder,
     HiOutlineMusicNote, HiOutlineAcademicCap, HiOutlineDesktopComputer,
-    HiOutlineSparkles, HiOutlineNewspaper, HiOutlineGlobe
+    HiOutlineSparkles, HiOutlineNewspaper, HiOutlineGlobe, HiOutlineX
 } from 'react-icons/hi';
 import { SiYoutubegaming } from 'react-icons/si';
 
-const Sidebar = ({ isOpen, isMini }) => {
+const Sidebar = ({ isOpen, isMini, isMobile, onClose }) => {
     const { isAuthenticated, user } = useAuth();
     const location = useLocation();
 
@@ -47,8 +47,12 @@ const Sidebar = ({ isOpen, isMini }) => {
         return location.pathname.startsWith(path);
     };
 
-    // Mini sidebar (collapsed)
-    if (isMini) {
+    const handleLinkClick = () => {
+        if (isMobile && onClose) onClose();
+    };
+
+    // Mini sidebar (collapsed) — desktop only
+    if (isMini && !isMobile) {
         return (
             <aside className="fixed left-0 top-14 bottom-0 w-[72px] bg-z-bg z-30
         hidden md:flex flex-col items-center py-1 overflow-y-auto no-scrollbar">
@@ -77,21 +81,38 @@ const Sidebar = ({ isOpen, isMini }) => {
         );
     }
 
-    // Full sidebar
+    // Full sidebar (desktop expanded + mobile drawer)
     return (
         <>
             {/* Overlay for mobile */}
-            {isOpen && (
+            {isOpen && isMobile && (
                 <div
-                    className="fixed inset-0 bg-black/50 z-30 md:hidden animate-fade-in"
-                    onClick={() => { }}
+                    className="fixed inset-0 bg-black/60 z-40 animate-fade-in"
+                    onClick={onClose}
                 />
             )}
 
-            <aside className={`fixed left-0 top-14 bottom-0 w-[240px] bg-z-bg z-40
+            <aside className={`fixed left-0 top-0 md:top-14 bottom-0 w-[280px] sm:w-[240px] bg-z-bg z-50 md:z-40
         overflow-y-auto no-scrollbar transition-transform duration-300 ease-out
         border-r border-z-border/30
-        ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        ${!isMobile && !isOpen ? 'md:translate-x-0' : ''}`}>
+
+                {/* Mobile header with close button */}
+                {isMobile && (
+                    <div className="flex items-center justify-between px-4 py-3 border-b border-z-border/30">
+                        <div className="flex items-center gap-2">
+                            <img src="/zentube-logo.png" alt="Zentube" className="w-8 h-8 rounded-lg" />
+                            <span className="text-lg font-bold">
+                                <span className="text-z-text">Zen</span>
+                                <span className="gradient-text">tube</span>
+                            </span>
+                        </div>
+                        <button onClick={onClose} className="btn-icon">
+                            <HiOutlineX className="w-5 h-5" />
+                        </button>
+                    </div>
+                )}
 
                 <div className="py-3 px-3">
                     {/* Main */}
@@ -100,6 +121,7 @@ const Sidebar = ({ isOpen, isMini }) => {
                             <NavLink
                                 key={link.to}
                                 to={link.to}
+                                onClick={handleLinkClick}
                                 className={`sidebar-item ${isActive(link.to) ? 'sidebar-item-active' : ''}`}
                             >
                                 <link.icon className={`w-5 h-5 ${isActive(link.to) ? 'text-z-text' : ''}`} />
@@ -121,6 +143,7 @@ const Sidebar = ({ isOpen, isMini }) => {
                                 <NavLink
                                     key={link.to}
                                     to={link.to}
+                                    onClick={handleLinkClick}
                                     className={`sidebar-item ${isActive(link.to) ? 'sidebar-item-active' : ''}`}
                                 >
                                     <link.icon className={`w-5 h-5 ${isActive(link.to) ? 'text-z-text' : ''}`} />
@@ -137,6 +160,7 @@ const Sidebar = ({ isOpen, isMini }) => {
                             <NavLink
                                 key={link.label}
                                 to={link.to}
+                                onClick={handleLinkClick}
                                 className={`sidebar-item`}
                             >
                                 <link.icon className="w-5 h-5" />
@@ -153,6 +177,7 @@ const Sidebar = ({ isOpen, isMini }) => {
                                 <NavLink
                                     key={link.to}
                                     to={link.to}
+                                    onClick={handleLinkClick}
                                     className={`sidebar-item ${isActive(link.to) ? 'sidebar-item-active' : ''}`}
                                 >
                                     <link.icon className={`w-5 h-5 ${isActive(link.to) ? 'text-z-text' : ''}`} />
@@ -167,6 +192,7 @@ const Sidebar = ({ isOpen, isMini }) => {
                         <div className="py-3 border-b border-z-border/50">
                             <NavLink
                                 to="/admin"
+                                onClick={handleLinkClick}
                                 className={`sidebar-item ${isActive('/admin') ? 'sidebar-item-active' : ''}`}
                             >
                                 <HiOutlineViewGrid className="w-5 h-5 text-accent-gold" />
@@ -179,6 +205,7 @@ const Sidebar = ({ isOpen, isMini }) => {
                     <div className="py-3 border-b border-z-border/50">
                         <NavLink
                             to="/settings"
+                            onClick={handleLinkClick}
                             className={`sidebar-item ${isActive('/settings') ? 'sidebar-item-active' : ''}`}
                         >
                             <HiOutlineCog className="w-5 h-5" />
@@ -192,7 +219,7 @@ const Sidebar = ({ isOpen, isMini }) => {
                             <p className="text-sm text-z-text-secondary mb-3">
                                 Sign in to like videos, comment, and subscribe.
                             </p>
-                            <NavLink to="/auth" className="btn-secondary flex items-center gap-2 w-fit">
+                            <NavLink to="/auth" onClick={handleLinkClick} className="btn-secondary flex items-center gap-2 w-fit">
                                 <HiOutlineGlobe className="w-4 h-4" />
                                 Sign in
                             </NavLink>

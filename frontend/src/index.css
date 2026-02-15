@@ -384,3 +384,55 @@
     background-position: 200% 0;
   }
 }
+
+/* === MOBILE RESPONSIVE ENHANCEMENTS === */
+@media (max-width: 640px) {
+
+  /* Ensure touch-friendly targets on mobile */
+  .btn-icon,
+  .btn-icon-sm {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Tighter scrollbar on mobile */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  /* Mobile-friendly dropdown menus */
+  .dropdown-menu {
+    min-width: 180px;
+  }
+
+  /* Video player fills width on mobile */
+  video {
+    border-radius: 0;
+  }
+}
+
+/* Safe area insets for notched phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Smooth scrolling for mobile */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Better touch highlights on mobile */
+@media (hover: none) {
+  .sidebar-item:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .chip:active {
+    transform: scale(0.95);
+  }
+}
