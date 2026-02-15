@@ -104,7 +104,7 @@ const Sidebar = ({ isOpen, isMini, isMobile, onClose }) => {
                 {isMobile && (
                     <div className="flex items-center justify-between px-4 py-3 border-b border-z-border/30">
                         <div className="flex items-center gap-2">
-                            <img src={isDark ? '/zentube-logo-dark.png' : '/zentube-logo-light.png'} alt="Zentube" className="w-8 h-8 rounded-lg" />
+                            <img src="/zentube-logo.svg" alt="Zentube" className="w-8 h-8 rounded-lg" />
                             <span className="text-lg font-bold">
                                 <span className="text-z-text">Zen</span>
                                 <span className="gradient-text">tube</span>
