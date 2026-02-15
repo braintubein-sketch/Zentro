@@ -64,10 +64,11 @@ const Navbar = ({ onToggleSidebar }) => {
                         <HiOutlineMenu className="w-5 h-5" />
                     </button>
                     <Link to="/" className="flex items-center gap-1.5 group" id="logo-link">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-brand flex items-center justify-center
-              shadow-glow group-hover:shadow-glow-lg transition-shadow duration-300">
-                            <span className="text-white font-black text-sm">Z</span>
-                        </div>
+                        <img
+                            src="/zentube-logo.png"
+                            alt="Zentube"
+                            className="w-8 h-8 rounded-lg shadow-glow group-hover:shadow-glow-lg transition-shadow duration-300"
+                        />
                         <span className="text-lg font-bold tracking-tight hidden sm:block">
                             <span className="text-z-text">Zen</span>
                             <span className="gradient-text">tube</span>
